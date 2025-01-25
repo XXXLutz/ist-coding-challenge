@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: VAT Validation Service
+  description: A service to validate VAT numbers for various countries.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3030/api/vat
+    description: Local development server
+
+paths:
+  /validate:
+    post:
+      summary: Validate a VAT number
+      description: Validates a VAT number for a given country code.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                countryCode:
+                  type: string
+                  description: ISO 2 country code
+                  example: "DE"
+                vat:
+                  type: string
+                  description: VAT number to validate
+                  example: "DE321281763"
+      responses:
+        '200':
+          description: VAT number validation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  validated:
+                    type: boolean
+                    description: Whether the VAT number is valid
+                  details:
+                    type: string
+                    description: Additional details about the validation
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+        '501':
+          description: Not Implemented
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message for unsupported country code

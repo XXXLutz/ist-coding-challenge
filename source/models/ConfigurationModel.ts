@@ -12,7 +12,6 @@ type ExpressServerOptions = Pick<
 >;
 
 export interface Configuration {
-  // TO_CHANGE: add your needed configuration parameters
   readonly port: number;
   readonly expressServerOptions: ExpressServerOptions;
 }
