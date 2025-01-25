@@ -21,7 +21,7 @@ The Vat Validation API is used to run the necessarry validations before a call t
 ### Installation
 1. Clone the Repo
 ```sh
-git clone https://github.com/vlahunter/ist-coding-challenge
+git clone git@github.com:vlahunter/ist-coding-challenge.git
 cd ist-coding-challenge
 ```
 
@@ -49,12 +49,6 @@ After the API is up and running use any REST client of your choice to make a POS
     "countryCode": "CH",
     "vat": "CHE-116.267.986"
 }
-
-// expected response
-// {
-//     "validated": true,
-//     "details": "VAT number is valid for the given country code."
-// }
 ```
 
 5. Run tests
@@ -63,6 +57,7 @@ pnpm run test
 ```
 
 6. Important notes on usage
+
 The API is able to receive a given VAT number and after validations, it strips the country code because this is how the services expect to process it. For example:
 ```json
 // provided by user
